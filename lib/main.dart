@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:new_meals_app/screens/tabs.dart';
+
+import 'package:new_meals_app/routes/app_route_config.dart';
 
 final theme = ThemeData(
   useMaterial3: true,
@@ -25,9 +27,17 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    // return MaterialApp(
+    //   theme: theme,
+    //   home: const TabsScreen(),
+    // );
+
+    // using GoRouter
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       theme: theme,
-      home: const TabsScreen(),
+      title: 'Meals App',
+      routerConfig: AppRouteConfig().router,
     );
   }
 }

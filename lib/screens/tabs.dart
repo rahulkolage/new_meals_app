@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 // import 'package:new_meals_app/data/dummy_data.dart'; // commented for using Riverpod Provider
 // import 'package:new_meals_app/models/meal.dart';
 import 'package:new_meals_app/screens/categories.dart';
-import 'package:new_meals_app/screens/filters.dart';
+// import 'package:new_meals_app/screens/filters.dart'; // commented above for using GoRouter
 import 'package:new_meals_app/screens/meals.dart';
 import 'package:new_meals_app/widgets/main_drawer.dart';
 // import 'package:new_meals_app/providers/meals_provider.dart';
@@ -66,15 +67,19 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     Navigator.of(context).pop();
 
     if (identifier == 'filters') {
-      // we will continue to use push as we want back button on
-      // fitlers screen to work
-      // final result =
-      await Navigator.of(context).push<Map<Filter, bool>>(
-        MaterialPageRoute(
-          builder: (ctx) => const FilterScreen(),
-          // currentFilters: _selectedFilters, // no more needed as we are using Filters provider
-        ),
-      );
+      // // we will continue to use push as we want back button on
+      // // fitlers screen to work
+      // // final result =
+      // await Navigator.of(context).push<Map<Filter, bool>>(
+      //   MaterialPageRoute(
+      //     builder: (ctx) => const FilterScreen(),
+      //     // currentFilters: _selectedFilters, // no more needed as we are using Filters provider
+      //   ),
+      // );
+
+      // commented above for using GoRouter
+      // GoRouter.of(context).push<Map<Filter, bool>>('/FilterScreen');
+      context.go('/filters');
 
       // no longer needed as this is done via Provider
       // setState(() {
@@ -105,7 +110,6 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
     // we will use Provider to get dummyMeals
     // ref property of riverpod to setup Listeners for providers.
-
 
     // // Connecting Multiple Providers with each other
     // // moving code below to filters provider
